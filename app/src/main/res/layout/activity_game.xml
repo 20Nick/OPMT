@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="459dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="123dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/B2"
+        app:layout_constraintStart_toStartOf="@+id/B2"
+        app:layout_constraintTop_toBottomOf="@+id/currentActiveTextbox"
+        app:srcCompat="@drawable/board" />
+
+    <Button
+        android:id="@+id/B1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="89dp"
+        android:background="@drawable/blackbutton"
+        android:text="B"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/B9"
+        app:layout_constraintEnd_toStartOf="@+id/B2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/B6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="206dp"
+        android:background="@drawable/whitebutton"
+        android:text="W"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/B5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/B9" />
+
+    <Button
+        android:id="@+id/B5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="208dp"
+        android:background="@drawable/whitebutton"
+        android:text="W"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/B6"
+        app:layout_constraintTop_toBottomOf="@+id/B2" />
+
+    <Button
+        android:id="@+id/B4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="304dp"
+        android:background="@drawable/whitebutton"
+        android:text="W"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/B7"
+        app:layout_constraintTop_toBottomOf="@+id/B3" />
+
+    <Button
+        android:id="@+id/B9"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="82dp"
+        android:background="@drawable/emptybutton"
+        android:text="E"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/B6"
+        app:layout_constraintEnd_toStartOf="@+id/B3"
+        app:layout_constraintStart_toEndOf="@+id/B8"
+        app:layout_constraintTop_toBottomOf="@+id/B1" />
+
+    <Button
+        android:id="@+id/B3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="214dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/blackbutton"
+        android:text="B"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/B4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/B9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/B2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="257dp"
+        android:background="@drawable/blackbutton"
+        android:text="B"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/B1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/B8"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="214dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/blackbutton"
+        android:text="B"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/B7"
+        app:layout_constraintEnd_toStartOf="@+id/B9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/B7"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="241dp"
+        android:layout_marginBottom="304dp"
+        android:background="@drawable/whitebutton"
+        android:text="W"
+        android:textColor="#00000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/B4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/B8" />
+
+    <TextView
+        android:id="@+id/currentActiveTextbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="32dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
