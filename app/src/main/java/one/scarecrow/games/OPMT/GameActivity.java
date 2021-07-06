@@ -1,4 +1,4 @@
-package com.Scarecrow.games.OPMT;
+package one.scarecrow.games.OPMT;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -149,6 +149,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /* TODO
+     *  When screen size changes, keep the layout the same.
      *  More themes?
      *  Add how to play
      *  Clean up code

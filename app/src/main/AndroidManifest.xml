@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.Scarecrow.games.OPMT">
+    package="one.scarecrow.games.OPMT">
 
     <application
         android:allowBackup="true"
@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/iconcircle"
         android:supportsRtl="true"
         android:theme="@style/Theme.MuTorere">
-        <activity android:name="com.Scarecrow.games.OPMT.GameActivity" android:configChanges="orientation" android:screenOrientation="portrait"></activity>
-        <activity android:name="com.Scarecrow.games.OPMT.MainMenu" android:configChanges="orientation" android:screenOrientation="portrait">
+        <activity android:name="one.scarecrow.games.OPMT.GameActivity" android:configChanges="orientation" android:screenOrientation="portrait"></activity>
+        <activity android:name="one.scarecrow.games.OPMT.MainMenu" android:configChanges="orientation" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

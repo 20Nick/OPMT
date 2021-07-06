@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.Scarecrow.games.OPMT"
+        applicationId "one.scarecrow.games.OPMT"
         minSdkVersion 20
         targetSdkVersion 30
         versionCode 1

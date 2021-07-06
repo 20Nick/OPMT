@@ -1,4 +1,4 @@
-package com.Scarecrow.games.OPMT;
+package one.scarecrow.games.OPMT;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;

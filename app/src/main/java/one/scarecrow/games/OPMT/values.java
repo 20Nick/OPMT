@@ -1,4 +1,4 @@
-package com.Scarecrow.games.OPMT;
+package one.scarecrow.games.OPMT;
 
 public class values {
     static Boolean  isWhiteTurn = false;
