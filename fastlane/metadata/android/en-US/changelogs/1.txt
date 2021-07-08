@@ -1,0 +1,5 @@
+* Public Release
+* Working Game
+* New icons and images
+* AI
+* Play with Friends
