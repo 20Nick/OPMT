@@ -10,3 +10,6 @@ An android board game that is similar to Mū tōrere, a board game from New Zeal
 
 <img src="optmScreenshots/mainMenu.png" width="350px" alt="OPTM Main Menu">
 <img src="optmScreenshots/game.png" width="350px" alt="OPTM Game">
+
+## Todo
+ - [ ] Make a stronger AI
