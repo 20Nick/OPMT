@@ -1,18 +1,14 @@
 package one.scarecrow.games.OPMT;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
@@ -44,105 +40,57 @@ public class GameActivity extends AppCompatActivity {
 
 
         //Change bottom nav bar to transparent
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow(); // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
+        Window w = getWindow(); // in Activity's onCreate() for instance
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
-
-          // How to switch to a different activity
+        // How to switch to a different activity
 //        Intent myIntent = new Intent(this, Game.class);
 //        startActivity(myIntent);
 
         // Defining vars
-        currentActiveTextBox = (TextView) findViewById(R.id.currentActiveTextbox);
-        B1 = (Button) findViewById(R.id.B1);
-        B2 = (Button) findViewById(R.id.B2);
-        B3 = (Button) findViewById(R.id.B3);
-        B4 = (Button) findViewById(R.id.B4);
-        B5 = (Button) findViewById(R.id.B5);
-        B6 = (Button) findViewById(R.id.B6);
-        B7 = (Button) findViewById(R.id.B7);
-        B8 = (Button) findViewById(R.id.B8);
-        B9 = (Button) findViewById(R.id.B9);
+        currentActiveTextBox = findViewById(R.id.currentActiveTextbox);
+        B1 = findViewById(R.id.B1);
+        B2 = findViewById(R.id.B2);
+        B3 = findViewById(R.id.B3);
+        B4 = findViewById(R.id.B4);
+        B5 = findViewById(R.id.B5);
+        B6 = findViewById(R.id.B6);
+        B7 = findViewById(R.id.B7);
+        B8 = findViewById(R.id.B8);
+        B9 = findViewById(R.id.B9);
 
 
 
-        //Making the textbox show the current turn
-        currentActiveTextBox.setText("It is currently " + whosTurn(isWhiteTurn) + " turn.");
+        //Making the text box show the current turn
+        currentActiveTextBox.setText(getString(R.string.current_turn, currentTurn(isWhiteTurn)));
         // Updating each button background value
         buttonReset();
 
 
         // On click listeners for each button,
-        B1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B1);
-            }
-        });
+        B1.setOnClickListener(view -> buttonOnClickMethod(B1));
 
-        B2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B2);
-            }
-        });
+        B2.setOnClickListener(view -> buttonOnClickMethod(B2));
 
-        B3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B3);
-            }
-        });
+        B3.setOnClickListener(view -> buttonOnClickMethod(B3));
 
-        B4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B4);
-            }
-        });
+        B4.setOnClickListener(view -> buttonOnClickMethod(B4));
 
-        B5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B5);
-            }
-        });
+        B5.setOnClickListener(view -> buttonOnClickMethod(B5));
 
-        B6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B6);
-            }
-        });
+        B6.setOnClickListener(view -> buttonOnClickMethod(B6));
 
-        B7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B7);
-            }
-        });
+        B7.setOnClickListener(view -> buttonOnClickMethod(B7));
 
-        B8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B8);
-            }
-        });
+        B8.setOnClickListener(view -> buttonOnClickMethod(B8));
 
-        B9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonOnClickMethod(B9);
-            }
-        });
+        B9.setOnClickListener(view -> buttonOnClickMethod(B9));
 
         // if local multiplayer is off and computer is black, move computer
         if (!localMultiplayer && (!isWhiteComputer && !isWhiteTurn)){
             moveRandomPiece(false);
-            //update all peieces
+            //update all pieces
             buttonReset();
         }
 
@@ -213,15 +161,6 @@ public class GameActivity extends AppCompatActivity {
         }else { // If it is none of the above, it is an empty button
             B.setBackgroundResource(R.drawable.emptybutton);
         }
-    }
-
-
-    // Can and should delete
-    /* TODO
-        Delete this method
-     */
-    private void dig(){
-        currentActiveTextBox.setText("Current turn is : "+ whosTurn(isWhiteTurn) + " : " + currentButtonActiveId);
     }
 
     private boolean isWin(){ // Checks if there is a winner
@@ -429,33 +368,29 @@ public class GameActivity extends AppCompatActivity {
         }
 
         // From B8, checks the around valid places
-        if((from.getId() == B8.getId() && ( (to.getId() == B7.getId()) || (to.getId() == B9.getId() || (to.getId() == B1.getId()))))
-                || to.getId() == B8.getId() && ( (from.getId() == B7.getId()) || (from.getId() == B9.getId() || (from.getId() == B1.getId())))){
-            return true;
-        }
-
-        return false;
+        return (from.getId() == B8.getId() && ((to.getId() == B7.getId()) || (to.getId() == B9.getId() || (to.getId() == B1.getId()))))
+                || to.getId() == B8.getId() && ((from.getId() == B7.getId()) || (from.getId() == B9.getId() || (from.getId() == B1.getId())));
     }
 
     // Moves the button 'currentButtonActive' to 'moveToButton'
     private void moveButton(Button moveToButton){ // moveToButton is always the empty button
 
-        currentActiveTextBox.setText("It is currently " + whosTurn(isWhiteTurn) + "turn.");
+        currentActiveTextBox.setText(getString(R.string.current_turn, currentTurn(isWhiteTurn)));
 
-        // If the ID is 0, do nothing. Incase this method is called without anything selected
+        // If the ID is 0, do nothing. In case this method is called without anything selected
         if(currentButtonActiveId == 0){
             return;
         }
 
         // init currentButtonActive by using the id stored in the global var currentButtonActiveId
-        Button currentButtonActive = (Button) findViewById(currentButtonActiveId);
+        Button currentButtonActive = findViewById(currentButtonActiveId);
         // Making sure moveToButton is the empty space and that the active button is  not the empty space
         if(moveToButton.getText().equals("E") && !currentButtonActive.getText().equals("E")){
-            //  Check if the move is valid                      Check if the whos turn it is, and making sure they move the right piece
+            //  Check if the move is valid                      Check if the who's turn it is, and making sure they move the right piece
             if (validMove(currentButtonActive, moveToButton) && ((isWhiteTurn && currentButtonActive.getText().equals("W")) || (!isWhiteTurn && currentButtonActive.getText().equals("B")))){
-                // Puts ethier B or W in playerColor, depending on whos turn it is and the current button
+                // Puts either B or W in playerColor, depending on who's turn it is and the current button
                 String playerColor = (String) currentButtonActive.getText();
-                // sets the Empty button to the currentButtonAtive text
+                // sets the Empty button to the currentButtonActive text
                 moveToButton.setText(playerColor);
 
                 // Sets the button moving to empty
@@ -464,21 +399,19 @@ public class GameActivity extends AppCompatActivity {
                 //Ends turn
                 isWhiteTurn = !isWhiteTurn;
                 currentButtonActiveId = 0;
-                currentActiveTextBox.setText("It is currently " + whosTurn(isWhiteTurn) + "turn.");
+                currentActiveTextBox.setText(getString(R.string.current_turn, currentTurn(isWhiteTurn)));
 
                 // Checks if there is any winner, The winner will be (!isWhiteTurn)
                 if(isWin()){
                     // Creates a pop up message, saying there has been a winner and if you would like to play again
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage(whosTurn(!isWhiteTurn) + " has won this round!")
+                    builder.setMessage(getString(R.string.result, currentTurn(!isWhiteTurn)))
                             .setCancelable(false)
-                            .setPositiveButton("Restart?", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // Restarts the activity
-                                    Intent intent = getIntent();
-                                    finish();
-                                    startActivity(intent);
-                                }
+                            .setPositiveButton(getText(R.string.restart_query), (dialog, id) -> {
+                                // Restarts the activity
+                                Intent intent = getIntent();
+                                finish();
+                                startActivity(intent);
                             });
                     AlertDialog alert = builder.create();
                     alert.show();
@@ -557,27 +490,25 @@ public class GameActivity extends AppCompatActivity {
 
     private void forfeit() { // If there is a case where the while does not stop, move here and ask for a new match
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Ai has forfeited the mach!! Player has won this round!")
+        builder.setMessage(getString(R.string.ai_forfeit))
                 .setCancelable(false)
-                .setPositiveButton("Restart?", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Restarts the activity
-                        Intent intent = getIntent();
-                        finish();
-                        startActivity(intent);
-                    }
+                .setPositiveButton(getString(R.string.restart_query), (dialog, id) -> {
+                    // Restarts the activity
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                 });
         AlertDialog alert = builder.create();
         alert.show();
     }
 
-    private String whosTurn(boolean isWhiteTurn){ // Returns whos turn it is as a string
+    private String currentTurn(boolean isWhiteTurn){ // Returns who's turn it is as a string
         String currentTurn;
         if(isWhiteTurn){
-            currentTurn = "White";
+            currentTurn = getString(R.string.white);
 
         }else{
-            currentTurn = "Black";
+            currentTurn = getString(R.string.black);
         }
         return currentTurn;
     }
