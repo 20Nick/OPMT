@@ -17,10 +17,10 @@
     <string name="human">human</string>
     <string name="white">White</string>
     <string name="black">Black</string>
-    <string name="white_has">White\'s</string>
-    <string name="black_has">Black\'s</string>
+    <string name="white_has">white\'s</string>
+    <string name="black_has">black\'s</string>
 
-    <string name="B">B</string>
-    <string name="W">W</string>
-    <string name="E">E</string>
+    <string name="B" translatable="false">B</string>
+    <string name="W" translatable="false">W</string>
+    <string name="E" translatable="false">E</string>
 </resources>
