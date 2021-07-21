@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">OPMT</string>
+
+    <string name="play_with_computer">Play with Computer</string>
+    <string name="play_with_friend">Play with Friend</string>
+
+    <string name="go_first_query">Who will go first?</string>
+    <string name="how_to_play">How to play?</string>
+    <string name="restart_query">Restart?</string>
+
+    <string name="current_turn">It is currently %1$s turn.</string>
+
+    <string name="result">%1$s has won this turn!</string>
+    <string name="ai_forfeit">Ai has forfeited the match!! Player has won this round!</string>
+
+    <string name="computer">computer</string>
+    <string name="human">human</string>
+    <string name="white">White</string>
+    <string name="black">Black</string>
+    <string name="white_has">white\'s</string>
+    <string name="black_has">black\'s</string>
+
+    <string name="B" translatable="false">B</string>
+    <string name="W" translatable="false">W</string>
+    <string name="E" translatable="false">E</string>
 </resources>
