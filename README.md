@@ -8,10 +8,3 @@ An Android board game from New Zealand that is similar to Mū tōrere.
   * You win when your opponent is unable to make a move. 
 <img src="optmScreenshots/mainMenu.png" width="350px" alt="OPTM Main Menu">
 <img src="optmScreenshots/game.png" width="350px" alt="OPTM Game">
-
-## Todo
- - [ ] Make a stronger AI
- - [ ] When screen size changes, keep the layout the same.  
- - [ ] More themes
- - [ ] Add how to play
- - [ ] Clean up code
