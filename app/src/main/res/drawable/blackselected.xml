@@ -11,5 +11,5 @@
 
     </corners>
 <stroke android:width="5dp" android:color="#66B9F9" />
-    <solid android:color="@color/black"/>
+    <solid android:color="@android:color/holo_blue_bright"/>
 </shape>
