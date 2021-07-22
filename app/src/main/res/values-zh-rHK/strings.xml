@@ -6,13 +6,11 @@
     <string name="go_first_query">誰會先移動？</string>
     <string name="how_to_play">怎麼玩？</string>
     <string name="restart_query">重新開始？</string>
-    <string name="current_turn">現在是%1$s回合</string>
+    <string name="current_turn">現在是%1$s的回合</string>
     <string name="result">%1$s贏了！</string>
     <string name="ai_forfeit">Ai 投降了！！玩家贏了！</string>
     <string name="computer">電腦</string>
     <string name="human">玩家</string>
     <string name="white">白色</string>
     <string name="black">黑色</string>
-    <string name="white_has">白色的</string>
-    <string name="black_has">黑色的</string>
 </resources>
