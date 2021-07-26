@@ -1,21 +1,15 @@
 package one.scarecrow.games.OPMT;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
-import java.util.Random;
+import androidx.appcompat.app.AppCompatActivity;
 
 import one.scarecrow.games.OPMT.Game.Board;
 import one.scarecrow.games.OPMT.Game.Pieces;
@@ -27,7 +21,6 @@ public class GameActivity extends AppCompatActivity {
     Button B1, B2, B3, B4, B5, B6, B7, B8, B9;
 
     // When pressed for the first time, the button will become activated and the second press of an another button will move
-    int currentButtonActiveId;
 
 
 
@@ -50,10 +43,8 @@ public class GameActivity extends AppCompatActivity {
 
 
         //Change bottom nav bar to transparent
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow(); // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
+        Window w = getWindow(); // in Activity's onCreate() for instance
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         // Defining vars
         currentActiveTextBox = findViewById(R.id.currentActiveTextbox);
@@ -76,6 +67,8 @@ public class GameActivity extends AppCompatActivity {
         B7.setOnClickListener(view -> buttonOnClickMethod(7));
         B8.setOnClickListener(view -> buttonOnClickMethod(8));
         B9.setOnClickListener(view -> buttonOnClickMethod(9));
+
+        setTextBox("It is " + board.getCurrentTurn() + " turn!");
     }
 
 
@@ -85,6 +78,28 @@ public class GameActivity extends AppCompatActivity {
        //Sets the background resource of all pieces ever button press... could lead to lag if try hard enough maybe?
         setAllBackgroundResourceValue(pieces);
 
+
+        //Log.d("GameMain", "l " + pieces.getPieceType(8));
+        if(board.isWin(pieces)){
+            win(board.getCurrentTurn(true));
+        }else {
+            setTextBox("It is " + board.getCurrentTurn() + " turn!");
+        }
+    }
+
+    private void win(String currentTurn) {
+        // Creates a pop up message, saying there has been a winner and if you would like to play again
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(currentTurn+" is the Winner!")
+                .setCancelable(false)
+                .setPositiveButton("Reset?", (dialog, id) -> {
+                    // Restarts the activity
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 

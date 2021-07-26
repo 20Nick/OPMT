@@ -1,10 +1,5 @@
 package one.scarecrow.games.OPMT.Game;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Pieces {
 
     String[] pieces = new String[10];
@@ -12,8 +7,6 @@ public class Pieces {
 
     /**
      * Sets all pieces to the default starting position.
-     *
-     * @return void
      */
     public void resetPieces() {
         // 1 2 3 8 = Black
@@ -48,7 +41,6 @@ public class Pieces {
      * @return The type of piece it is. Will only return black, black-selected, white, white-selected, or empty.
      */
     public String getPieceType(int n) {
-
         return pieces[n];
     }
 
@@ -72,14 +64,16 @@ public class Pieces {
      *
      * @return a list of all black pieces id that is on the board.
      */
-    public List<Integer> findAllBlackPieces(){
-        List<Integer> found = new ArrayList<Integer>();
+    public int[] findAllBlackPieces(){
+        int[] l = new int[5];
+        int count = 0;
         for (int i = 1; i < pieces.length; i++) {
             if (getPieceType(i).contains("black")) {
-                found.add(i);
+                count++;
+                l[count] = i;
             }
         }
-        return found;
+        return l;
     }
 
     /**
@@ -87,14 +81,16 @@ public class Pieces {
      *
      * @return a list of all white pieces id that is on the board.
      */
-    public List<Integer> findAllWhitePieces(){
-        List<Integer> found = new ArrayList<Integer>();
+    public int[] findAllWhitePieces(){
+        int[] l = new int[5];
+        int count = 0;
         for (int i = 1; i < pieces.length; i++) {
             if (getPieceType(i).contains("white")) {
-                found.add(i);
+                count++;
+                l[count] = i;
             }
         }
-        return found;
+        return l;
     }
 
 
@@ -120,10 +116,7 @@ public class Pieces {
      * @return true if there is a piece selected
      */
     public boolean isAnySelected() {
-        if (getSelectedPiece() == -1){
-            return false;
-        }
-        return true;
+        return getSelectedPiece() != -1;
     }
 
     /**
@@ -160,7 +153,7 @@ public class Pieces {
      *
      * @param buttonName should always be the empty space
      */
-    public void movePiece(int buttonName, int selectedButton) {
+    public void movePiece(int buttonName) {
         String buttonNameType = getPieceType(buttonName);
         int selectedPieceId = getSelectedPiece();
         String selectedPieceType = getPieceType(selectedPieceId);
