@@ -15,6 +15,7 @@
 
     <string name="computer">computer</string>
     <string name="human">human</string>
+
     <string name="white">white</string>
     <string name="black">black</string>
     <string name="whiteSelected" translatable="false">white-selected</string>
