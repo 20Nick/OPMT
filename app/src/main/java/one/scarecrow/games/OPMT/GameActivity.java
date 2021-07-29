@@ -89,16 +89,18 @@ public class GameActivity extends AppCompatActivity {
     private void buttonOnClickMethod(int n) {
         pieces = board.runTurn(n);
 
-
-
         checkWin();
         // if computers turn, run.
-        if (!localMultiplayer && isWhiteComputer && board.getCurrentTurn().equals("white")) {
+        if (!board.isWin(pieces) && !localMultiplayer && isWhiteComputer && board.getCurrentTurn().equals("white")) {
             ai.run(board, pieces);
-        } else if (!localMultiplayer && !isWhiteComputer && board.getCurrentTurn().equals("black")) {
+            //Checks win after ai
+            checkWin();
+        } else if (!board.isWin(pieces) && !localMultiplayer && !isWhiteComputer && board.getCurrentTurn().equals("black")) {
             ai.run(board, pieces);
+            //Checks win after ai
+            checkWin();
         }
-        checkWin();
+
 
 
         //Sets the background resource of all pieces ever button press... could lead to lag if try hard enough maybe?
@@ -114,11 +116,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void win(String currentTurn) {
+        Log.d("AlertBox", "box create");
+
         // Creates a pop up message, saying there has been a winner and if you would like to play again
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(currentTurn+" is the Winner!")
                 .setCancelable(false)
                 .setPositiveButton("Reset?", (dialog, id) -> {
+                    Log.d("AlertBox", "Button hit");
+                    dialog.dismiss();
                     // Restarts the activity
                     Intent intent = getIntent();
                     finish();
@@ -126,6 +132,8 @@ public class GameActivity extends AppCompatActivity {
                 });
         AlertDialog alert = builder.create();
         alert.show();
+        Log.d("AlertBox", "Box show");
+
     }
 
 
