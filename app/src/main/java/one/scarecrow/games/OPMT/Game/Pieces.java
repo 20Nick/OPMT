@@ -2,6 +2,8 @@ package one.scarecrow.games.OPMT.Game;
 
 public class Pieces {
 
+
+    String black, white, selected, empty;
     String[] pieces = new String[10];
     public int piecesLength = 10;
 
@@ -14,17 +16,17 @@ public class Pieces {
      */
     public void resetPieces() {
         // 1 2 3 8 = Black
-        pieces[1] = "black";
-        pieces[2] = "black";
-        pieces[3] = "black";
-        pieces[8] = "black";
+        pieces[1] = black;
+        pieces[2] = black;
+        pieces[3] = black;
+        pieces[8] = black;
         // 4 5 6 7 = White
-        pieces[4] = "white";
-        pieces[5] = "white";
-        pieces[6] = "white";
-        pieces[7] = "white";
+        pieces[4] = white;
+        pieces[5] = white;
+        pieces[6] = white;
+        pieces[7] = white;
         // 9 = Empty
-        pieces[9] = "empty";
+        pieces[9] = empty;
     }
 
 
@@ -55,7 +57,7 @@ public class Pieces {
      */
     public int findEmptySpace() {
         for (int i = 1; i < pieces.length; i++) {
-            if (getPieceType(i).contains("empty")) {
+            if (getPieceType(i).contains(empty)) {
                 return i;
             }
         }
@@ -72,7 +74,7 @@ public class Pieces {
         int[] l = new int[5];
         int count = 0;
         for (int i = 1; i < pieces.length; i++) {
-            if (getPieceType(i).contains("black")) {
+            if (getPieceType(i).contains(black)) {
                 count++;
                 l[count] = i;
             }
@@ -89,7 +91,7 @@ public class Pieces {
         int[] l = new int[5];
         int count = 0;
         for (int i = 1; i < pieces.length; i++) {
-            if (getPieceType(i).contains("white")) {
+            if (getPieceType(i).contains(white)) {
                 count++;
                 l[count] = i;
             }
@@ -108,8 +110,8 @@ public class Pieces {
     public void select(int buttonName) {
         String type = getPieceType(buttonName);
         //Do not select the empty space.
-        if(!type.contains("empty")){
-            type = type + "-selected";
+        if(!type.contains(empty)){
+            type = type + "-"+selected;
             setPieceType(buttonName, type);
         }
     }
@@ -131,7 +133,7 @@ public class Pieces {
     public int getSelectedPiece(){
         for (int i = 1; i < pieces.length; i++){
             String type = getPieceType(i);
-            if(type.contains("selected")) {
+            if(type.contains(selected)) {
                 return i;
             }
         }
@@ -145,10 +147,10 @@ public class Pieces {
      */
     public void unselect(int selectedPiece) {
         String type = getPieceType(selectedPiece);
-        if (type.contains("white")){
-            setPieceType(selectedPiece, "white");
-        }else if(type.contains("black")){
-            setPieceType(selectedPiece, "black");
+        if (type.contains(white)){
+            setPieceType(selectedPiece, white);
+        }else if(type.contains(black)){
+            setPieceType(selectedPiece, black);
         }
     }
 
@@ -160,10 +162,10 @@ public class Pieces {
     public void unselect() {
         int selectedPiece = getSelectedPiece();
         String type = getPieceType(selectedPiece);
-        if (type.contains("white")){
-            setPieceType(selectedPiece, "white");
-        }else if(type.contains("black")){
-            setPieceType(selectedPiece, "black");
+        if (type.contains(white)){
+            setPieceType(selectedPiece, white);
+        }else if(type.contains(black)){
+            setPieceType(selectedPiece, black);
         }
     }
 
@@ -180,5 +182,12 @@ public class Pieces {
         // Basically just switch them both.
         setPieceType(buttonName, selectedPieceType);
         setPieceType(selectedPieceId, buttonNameType);
+    }
+
+    public void setStrings(String[] strings) {
+        this.black = strings[0];
+        this.white = strings[1];
+        this.selected = strings[2];
+        this.empty = strings[3];
     }
 }

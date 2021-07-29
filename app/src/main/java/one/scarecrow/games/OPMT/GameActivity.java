@@ -3,7 +3,6 @@ package one.scarecrow.games.OPMT;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -30,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     Boolean localMultiplayer = values.localMultiplayer;
     Boolean isWhiteComputer = values.isWhiteComputer;
 
-    Board board = new Board();
+    Board board;
     Pieces pieces;  // do not init pieces, board will do that.
     Ai ai = new Ai(isWhiteComputer,0);
 
@@ -67,6 +66,8 @@ public class GameActivity extends AppCompatActivity {
         B8.setOnClickListener(view -> buttonOnClickMethod(8));
         B9.setOnClickListener(view -> buttonOnClickMethod(9));
 
+        /* Giving different classes the strings from strings file */
+        board = new Board(getString(R.string.black), getString(R.string.white), getString(R.string.selected), getString(R.string.empty));
 
         // If the player selects play with computer and computer goes first, run Ai
         if(!localMultiplayer && !isWhiteComputer){
@@ -76,7 +77,7 @@ public class GameActivity extends AppCompatActivity {
         }
         
         //Setting up the text box
-        setTextBox("It is " + board.getCurrentTurn() + " turn!");
+        setTextBox(getString(R.string.current_turn, board.getCurrentTurn()));
     }
 
 
@@ -89,11 +90,11 @@ public class GameActivity extends AppCompatActivity {
 
         checkWin();
         // if computers turn, run.
-        if (!board.isWin(pieces) && !localMultiplayer && isWhiteComputer && board.getCurrentTurn().equals("white")) {
+        if (!board.isWin(pieces) && !localMultiplayer && isWhiteComputer && board.getCurrentTurn().equals(getString(R.string.white))) {
             ai.run(board, pieces);
             //Checks win after ai
             checkWin();
-        } else if (!board.isWin(pieces) && !localMultiplayer && !isWhiteComputer && board.getCurrentTurn().equals("black")) {
+        } else if (!board.isWin(pieces) && !localMultiplayer && !isWhiteComputer && board.getCurrentTurn().equals(getString(R.string.black))) {
             ai.run(board, pieces);
             //Checks win after ai
             checkWin();
@@ -112,7 +113,7 @@ public class GameActivity extends AppCompatActivity {
         if (board.isWin(pieces)) {
             win(board.getCurrentTurn(true));
         } else {
-            setTextBox("It is " + board.getCurrentTurn() + " turn!");
+            setTextBox(getString(R.string.current_turn, board.getCurrentTurn()));
         }
     }
 
@@ -123,9 +124,9 @@ public class GameActivity extends AppCompatActivity {
     private void win(String currentTurn) {
         // Creates a pop up message, saying there has been a winner and if you would like to play again
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(currentTurn+" is the Winner!")
+        builder.setMessage(getString(R.string.result, currentTurn))
                 .setCancelable(false)
-                .setPositiveButton("Reset?", (dialog, id) -> {
+                .setPositiveButton(getString(R.string.restart_query), (dialog, id) -> {
                     dialog.dismiss();
                     // Restarts the activity
                     Intent intent = getIntent();
@@ -167,22 +168,17 @@ public class GameActivity extends AppCompatActivity {
      */
     public void setBackgroundResourceValue(int buttonName, String type){
         Button B = findViewById(getButtonNameToId(buttonName));
-        switch (type.toLowerCase()){
-            case "black":
-                B.setBackgroundResource(R.drawable.blackbutton);
-                break;
-            case "black-selected":
-                B.setBackgroundResource(R.drawable.blackselected);
-                break;
-            case "white":
-                B.setBackgroundResource(R.drawable.whitebutton);
-                break;
-            case "white-selected":
-                B.setBackgroundResource(R.drawable.whiteselected);
-                break;
-            case "empty":
-                B.setBackgroundResource(R.drawable.emptybutton);
-                break;
+
+        if(type.toLowerCase().equals(getString(R.string.black))){
+            B.setBackgroundResource(R.drawable.blackbutton);
+        } else if(type.toLowerCase().equals(getString(R.string.blackSelected))){
+            B.setBackgroundResource(R.drawable.blackselected);
+        }else if(type.toLowerCase().equals(getString(R.string.white))){
+            B.setBackgroundResource(R.drawable.whitebutton);
+        }else if(type.toLowerCase().equals(getString(R.string.whiteSelected))){
+            B.setBackgroundResource(R.drawable.whiteselected);
+        }else if(type.toLowerCase().equals(getString(R.string.empty))){
+            B.setBackgroundResource(R.drawable.emptybutton);
         }
     }
 

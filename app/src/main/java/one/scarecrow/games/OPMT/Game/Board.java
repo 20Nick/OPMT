@@ -1,15 +1,30 @@
 package one.scarecrow.games.OPMT.Game;
 
-import android.util.Log;
-
 public class Board {
 
-    String currentTurn = "black";
+    //Work around for only using strings from the strings file...
+    String black, white, selected, empty;
+    String currentTurn;
     Pieces pieces = new Pieces();
 
-    public Board() {
+    /**
+     * Init function
+     *
+     * This is a work around for using the strings file everywhere...
+     * @param black the string for black
+     * @param white the string for white
+     */
+    public Board(String black, String white, String selected, String empty) {
         //Init board
+        this.black = black;
+        this.white = white;
+        this.selected = selected;
+        this.empty = empty;
+        currentTurn = black;
+        pieces.setStrings(getStrings());
+
         pieces.resetPieces();
+
     }
 
     /**
@@ -41,6 +56,14 @@ public class Board {
     }
 
     /**
+     * Returns the strings from the strings file
+     * @return array of two strings, 0 is black, 1 is white, 2 is selected.
+     */
+    public String[] getStrings(){
+        return new String[] {black, white, selected, empty};
+    }
+
+    /**
      * @return pieces
      */
     public Pieces getPieces(){
@@ -54,7 +77,7 @@ public class Board {
     public boolean isWin(Pieces p) {
         int[] l;
 
-        if(currentTurn.equals("black")){
+        if(currentTurn.equals(black)){
             l = p.findAllBlackPieces();
         }else {
             l =  p.findAllWhitePieces();
@@ -73,10 +96,10 @@ public class Board {
      * if( Switches the turn, should be used at the end of a turn.
      */
     public void switchTurn() {
-        if(currentTurn.equals("black")){
-            currentTurn = "white";
-        }else if(currentTurn.equals("white")){
-            currentTurn = "black";
+        if(currentTurn.equals(black)){
+            currentTurn = white;
+        }else if(currentTurn.equals(white)){
+            currentTurn = black;
         }
     }
 
@@ -87,10 +110,7 @@ public class Board {
      * @return true if it is the pieces current turn.
      */
     private boolean isCurrentTurn(int buttonName) {
-        if(pieces.getPieceType(buttonName).contains(currentTurn)){
-            return true;
-        }
-        return false;
+        return pieces.getPieceType(buttonName).contains(currentTurn);
     }
 
     /**
@@ -101,10 +121,10 @@ public class Board {
      */
     public String getCurrentTurn(boolean opposite){
         if (opposite){
-            if (currentTurn.equals("black")){
-                return "white";
+            if (currentTurn.equals(black)){
+                return white;
             }else {
-                return "black";
+                return black;
             }
         }
         return currentTurn;
