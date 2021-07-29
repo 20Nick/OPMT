@@ -18,6 +18,9 @@
     <string name="white">White</string>
     <string name="black">Black</string>
 
+    <string name="player1" translatable="false">Player 1</string>
+    <string name="player2" translatable="false">Player 2</string>
+
     <string name="B" translatable="false">B</string>
     <string name="W" translatable="false">W</string>
     <string name="E" translatable="false">E</string>

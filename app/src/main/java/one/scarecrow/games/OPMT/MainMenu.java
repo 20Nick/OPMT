@@ -33,6 +33,8 @@ public class MainMenu extends AppCompatActivity {
 
         Button helpButton = findViewById(R.id.howPlayBtn);
 
+        Button settingsButton = findViewById(R.id.settingsBtn);
+
         // Game activity intent
         myIntent = new Intent(this, GameActivity.class);
 
@@ -53,6 +55,10 @@ public class MainMenu extends AppCompatActivity {
             startActivity(myIntent);
         });
 
+        settingsButton.setOnClickListener(view -> {
+            Intent settingsInit = new Intent(this, settingsActivity.class);
+            startActivity(settingsInit);
+        });
     }
 
 

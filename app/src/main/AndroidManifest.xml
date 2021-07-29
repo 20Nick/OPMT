@@ -9,8 +9,15 @@
         android:roundIcon="@mipmap/iconcircle"
         android:supportsRtl="true"
         android:theme="@style/Theme.MuTorere">
-        <activity android:name="one.scarecrow.games.OPMT.GameActivity" android:configChanges="orientation" android:screenOrientation="portrait"></activity>
-        <activity android:name="one.scarecrow.games.OPMT.MainMenu" android:configChanges="orientation" android:screenOrientation="portrait">
+        <activity android:name=".settingsActivity"></activity>
+        <activity
+            android:name=".GameActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainMenu"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
