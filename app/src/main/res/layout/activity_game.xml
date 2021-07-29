@@ -22,7 +22,6 @@
             android:layout_marginStart="80dp"
             android:layout_alignTop="@id/imageView"
             android:background="@drawable/blackbutton"
-            android:text="@string/B"
             android:textColor="#00000000"
             />
     <Button
@@ -33,7 +32,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="90dp"
             android:background="@drawable/blackbutton"
-            android:text="@string/B"
             android:textColor="#00000000"/>
 
     <Button
@@ -44,7 +42,6 @@
             android:layout_marginTop="100dp"
             android:layout_alignEnd="@id/imageView"
             android:background="@drawable/blackbutton"
-            android:text="@string/B"
             android:textColor="#00000000"/>
 
     <Button
@@ -55,7 +52,6 @@
             android:layout_alignEnd="@id/imageView"
             android:layout_marginTop="150dp"
             android:background="@drawable/whitebutton"
-            android:text="@string/W"
             android:textColor="#00000000"
             />
 
@@ -67,7 +63,6 @@
             android:layout_alignBottom="@id/imageView"
             android:layout_alignEnd="@id/imageView"
             android:layout_marginEnd="90dp"
-            android:text="@string/W"
             android:textColor="#00000000"/>
 
     <Button
@@ -77,7 +72,6 @@
             android:layout_alignBottom="@id/imageView"
             android:layout_marginStart="90dp"
             android:background="@drawable/whitebutton"
-            android:text="@string/W"
             android:textColor="#00000000"/>
 
     <Button
@@ -87,7 +81,6 @@
             android:layout_alignTop="@id/B8"
             android:layout_marginTop="150dp"
             android:background="@drawable/whitebutton"
-            android:text="@string/W"
             android:textColor="#00000000"/>
 
     <Button
@@ -97,7 +90,6 @@
             android:layout_alignTop="@id/B1"
             android:layout_marginTop="100dp"
             android:background="@drawable/blackbutton"
-            android:text="@string/B"
             android:textColor="#00000000"/>
 
     <Button
@@ -106,7 +98,6 @@
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:background="@drawable/emptybutton"
-            android:text="@string/E"
             android:textColor="#00000000"/>
     <TextView
             android:id="@+id/currentActiveTextbox"
