@@ -2,8 +2,8 @@ package one.scarecrow.games.OPMT;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import one.scarecrow.games.OPMT.Game.Ai;
 import one.scarecrow.games.OPMT.Game.Board;
 import one.scarecrow.games.OPMT.Game.Pieces;
 
@@ -27,12 +28,13 @@ public class GameActivity extends AppCompatActivity {
     TextView currentActiveTextBox;
 
     // Grabs all values from the values class, changed from the main menu
-    Boolean isWhiteTurn = values.isWhiteTurn;
     // Play on one screen with someone else!
     Boolean localMultiplayer = values.localMultiplayer;
     Boolean isWhiteComputer = values.isWhiteComputer;
 
     Board board = new Board();
+    Pieces pieces;
+    Ai ai = new Ai(isWhiteComputer,0);
 
 
     @Override
@@ -68,21 +70,45 @@ public class GameActivity extends AppCompatActivity {
         B8.setOnClickListener(view -> buttonOnClickMethod(8));
         B9.setOnClickListener(view -> buttonOnClickMethod(9));
 
+
+        // If the player selects play with computer and computer goes first, run Ai
+        if(!localMultiplayer && !isWhiteComputer){
+            pieces = board.getPieces();
+            ai.run(board, pieces);
+            setAllBackgroundResourceValue(pieces);
+            Log.d("AI Run", "3FU");
+        }
+
+
+        //Setting up the text box
         setTextBox("It is " + board.getCurrentTurn() + " turn!");
     }
 
 
     // This is the function that gets called when a button is pressed
-    private void buttonOnClickMethod(int n){
-       Pieces pieces = board.runTurn(n);
-       //Sets the background resource of all pieces ever button press... could lead to lag if try hard enough maybe?
+    private void buttonOnClickMethod(int n) {
+        pieces = board.runTurn(n);
+
+
+
+        checkWin();
+        // if computers turn, run.
+        if (!localMultiplayer && isWhiteComputer && board.getCurrentTurn().equals("white")) {
+            ai.run(board, pieces);
+        } else if (!localMultiplayer && !isWhiteComputer && board.getCurrentTurn().equals("black")) {
+            ai.run(board, pieces);
+        }
+        checkWin();
+
+
+        //Sets the background resource of all pieces ever button press... could lead to lag if try hard enough maybe?
         setAllBackgroundResourceValue(pieces);
+    }
 
-
-        //Log.d("GameMain", "l " + pieces.getPieceType(8));
-        if(board.isWin(pieces)){
+    private void checkWin(){
+        if (board.isWin(pieces)) {
             win(board.getCurrentTurn(true));
-        }else {
+        } else {
             setTextBox("It is " + board.getCurrentTurn() + " turn!");
         }
     }

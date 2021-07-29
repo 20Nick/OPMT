@@ -40,6 +40,10 @@ public class Board {
 
     }
 
+    public Pieces getPieces(){
+        return pieces;
+    }
+
     /**
      * Checks if there is any valid moves that current player can do
      * Need to fix this
@@ -65,7 +69,7 @@ public class Board {
      *
      * if( Switches the turn, should be used at the end of a turn.
      */
-    private void switchTurn() {
+    public void switchTurn() {
         if(currentTurn.equals("black")){
             currentTurn = "white";
         }else if(currentTurn.equals("white")){

@@ -5,6 +5,10 @@ public class Pieces {
     String[] pieces = new String[10];
     public int piecesLength = 10;
 
+    public Pieces(){
+        resetPieces();
+    }
+
     /**
      * Sets all pieces to the default starting position.
      */
@@ -140,6 +144,21 @@ public class Pieces {
      * @param selectedPiece a piece that is already selected, to be unselected.
      */
     public void unselect(int selectedPiece) {
+        String type = getPieceType(selectedPiece);
+        if (type.contains("white")){
+            setPieceType(selectedPiece, "white");
+        }else if(type.contains("black")){
+            setPieceType(selectedPiece, "black");
+        }
+    }
+
+    /**
+     *  Unselects a piece
+     *
+     * Will grab the selected piece by it self.
+     */
+    public void unselect() {
+        int selectedPiece = getSelectedPiece();
         String type = getPieceType(selectedPiece);
         if (type.contains("white")){
             setPieceType(selectedPiece, "white");
