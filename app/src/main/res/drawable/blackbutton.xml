@@ -4,6 +4,6 @@
     android:layout_height="wrap_content"
     android:shape="oval">
 
-    <corners android:radius="150dp"></corners>
-<solid android:width="5dp" android:color="@color/black" />
+    <corners android:radius="150dp"/>
+<solid android:width="5dp" android:color="@color/black"/>
 </shape>

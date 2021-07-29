@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,6 +61,7 @@ public class GameActivity extends AppCompatActivity {
         B8 = findViewById(R.id.B8);
         B9 = findViewById(R.id.B9);
 
+
         B1.setOnClickListener(view -> buttonOnClickMethod(1));
         B2.setOnClickListener(view -> buttonOnClickMethod(2));
         B3.setOnClickListener(view -> buttonOnClickMethod(3));
@@ -82,6 +84,7 @@ public class GameActivity extends AppCompatActivity {
 
         //Setting up the text box
         setTextBox("It is " + board.getCurrentTurn() + " turn!");
+
     }
 
 
@@ -102,9 +105,9 @@ public class GameActivity extends AppCompatActivity {
         }
 
 
-
         //Sets the background resource of all pieces ever button press... could lead to lag if try hard enough maybe?
         setAllBackgroundResourceValue(pieces);
+
     }
 
     private void checkWin(){
@@ -117,6 +120,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void win(String currentTurn) {
         Log.d("AlertBox", "box create");
+
 
         // Creates a pop up message, saying there has been a winner and if you would like to play again
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -145,6 +149,7 @@ public class GameActivity extends AppCompatActivity {
     private void setTextBox(String text){
         currentActiveTextBox.setText(text);
     }
+
 
     private void setAllBackgroundResourceValue(Pieces pieces){
         for (int i = 1; i < pieces.piecesLength; i++){
@@ -180,6 +185,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+
     /**
      * Takes the button name and gives you the button id. Useful for findViewById()
      *
@@ -210,6 +216,5 @@ public class GameActivity extends AppCompatActivity {
         // should never get here
         return 0;
     }
-
 
 }
