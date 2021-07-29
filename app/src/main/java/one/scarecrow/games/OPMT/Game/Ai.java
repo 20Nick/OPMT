@@ -5,7 +5,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Ai {
 
@@ -41,28 +40,31 @@ public class Ai {
         board.switchTurn();
     }
 
+
+    /**
+     * The ai will pick a random valid move that it can take.
+     */
     private void randomAi() {
         List<Integer> moves = returnValidMoves();
         Random rand = new Random();
 
         int randNumber = rand.nextInt(moves.size());
 
-        //randNumber = 0;
-        String print = "";
+        StringBuilder print = new StringBuilder();
         for (int s: moves) {
-            print = print + " " + s;
+            print.append(" ").append(s);
         }
-
-        Log.d("Random Ai", "List of moves are : " + print);
-
-        Log.d("Random Ai", "Random number is " + randNumber + " :: move list size is "+ moves.size());
-        Log.d("Random Ai", "Moves :: " + moves.get(randNumber));
 
         pieces.select(moves.get(randNumber));
 
 
     }
 
+    /**
+     * Find all valid moves that the AI is able to take and returns a list.
+     *
+     * @return a list of all valid moves that the ai is able to take.
+     */
     private List<Integer> returnValidMoves(){
         int[] l;
         List<Integer> moves = new ArrayList();

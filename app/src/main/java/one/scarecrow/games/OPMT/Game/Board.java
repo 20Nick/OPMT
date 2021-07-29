@@ -40,6 +40,9 @@ public class Board {
 
     }
 
+    /**
+     * @return pieces
+     */
     public Pieces getPieces(){
         return pieces;
     }
@@ -85,7 +88,6 @@ public class Board {
      */
     private boolean isCurrentTurn(int buttonName) {
         if(pieces.getPieceType(buttonName).contains(currentTurn)){
-            Log.d("check", "true");
             return true;
         }
         return false;

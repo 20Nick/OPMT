@@ -9,9 +9,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import one.scarecrow.games.OPMT.Game.Ai;
 import one.scarecrow.games.OPMT.Game.Board;
 import one.scarecrow.games.OPMT.Game.Pieces;
@@ -34,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
     Boolean isWhiteComputer = values.isWhiteComputer;
 
     Board board = new Board();
-    Pieces pieces;
+    Pieces pieces;  // do not init pieces, board will do that.
     Ai ai = new Ai(isWhiteComputer,0);
 
 
@@ -42,8 +39,6 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-
 
         //Change bottom nav bar to transparent
         Window w = getWindow(); // in Activity's onCreate() for instance
@@ -78,17 +73,17 @@ public class GameActivity extends AppCompatActivity {
             pieces = board.getPieces();
             ai.run(board, pieces);
             setAllBackgroundResourceValue(pieces);
-            Log.d("AI Run", "3FU");
         }
-
-
+        
         //Setting up the text box
         setTextBox("It is " + board.getCurrentTurn() + " turn!");
-
     }
 
 
-    // This is the function that gets called when a button is pressed
+    /**
+     * Called every time a button is pressed.
+     * @param n the piece id (1-9)
+     */
     private void buttonOnClickMethod(int n) {
         pieces = board.runTurn(n);
 
@@ -110,6 +105,9 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Easy function to check win and call the function win() to display the dialog to restart the game.
+     */
     private void checkWin(){
         if (board.isWin(pieces)) {
             win(board.getCurrentTurn(true));
@@ -118,16 +116,16 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * When there is a win, pop a dialog on screen to reset the board.
+     * @param currentTurn white or black, will display on screen witch player.
+     */
     private void win(String currentTurn) {
-        Log.d("AlertBox", "box create");
-
-
         // Creates a pop up message, saying there has been a winner and if you would like to play again
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(currentTurn+" is the Winner!")
                 .setCancelable(false)
                 .setPositiveButton("Reset?", (dialog, id) -> {
-                    Log.d("AlertBox", "Button hit");
                     dialog.dismiss();
                     // Restarts the activity
                     Intent intent = getIntent();
@@ -136,8 +134,6 @@ public class GameActivity extends AppCompatActivity {
                 });
         AlertDialog alert = builder.create();
         alert.show();
-        Log.d("AlertBox", "Box show");
-
     }
 
 
@@ -151,6 +147,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Run this function to set the background of all the buttons
+     *
+     * @param pieces The instance of pieces
+     */
     private void setAllBackgroundResourceValue(Pieces pieces){
         for (int i = 1; i < pieces.piecesLength; i++){
             setBackgroundResourceValue(i, pieces.getPieceType(i));
