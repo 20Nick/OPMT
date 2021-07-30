@@ -9,12 +9,13 @@
 
 
     <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
-            android:layout_centerVertical="true"
-            app:srcCompat="@drawable/board"/>
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/board"
+        app:tint="@color/grey" />
     <Button
             android:id="@+id/B1"
             android:layout_width="80dp"

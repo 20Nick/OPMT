@@ -16,10 +16,16 @@
     <string name="computer">computer</string>
     <string name="human">human</string>
 
+    <string name="settings" translatable="false">Settings</string>
+
+    <string name="player1" translatable="false">Player 1</string>
+    <string name="player2" translatable="false">Player 2</string>
+
     <string name="white">white</string>
     <string name="black">black</string>
     <string name="whiteSelected" translatable="false">white-selected</string>
     <string name="blackSelected" translatable="false">black-selected</string>
     <string name="selected" translatable="false">selected</string>
     <string name="empty" translatable="false">empty</string>
+
 </resources>
