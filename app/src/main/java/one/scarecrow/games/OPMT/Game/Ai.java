@@ -65,7 +65,7 @@ public class Ai {
      */
     private List<Integer> returnValidMoves(){
         int[] l;
-        List<Integer> moves = new ArrayList();
+        List<Integer> moves = new ArrayList<>();
 
         if(!isComputerWhite){
             l = pieces.findAllBlackPieces();
