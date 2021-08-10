@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/Documents/GitHub/OPMT/app/src/main/res/drawable/whitebutton.xml" value="0.27314814814814814" />
+        <entry key="..\:/Documents/Documents/GitHub/OPMT/app/src/main/res/layout/activity_game.xml" value="0.3171171171171171" />
+        <entry key="..\:/Documents/Documents/GitHub/OPMT/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Documents/Documents/GitHub/OPMT/app/src/main/res/xml/pref.xml" value="0.25" />
       </map>
     </option>

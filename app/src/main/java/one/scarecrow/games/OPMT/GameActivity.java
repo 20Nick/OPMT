@@ -12,14 +12,16 @@ import one.scarecrow.games.OPMT.Game.Ai;
 import one.scarecrow.games.OPMT.Game.Board;
 import one.scarecrow.games.OPMT.Game.Pieces;
 
+
 public class GameActivity extends AppCompatActivity {
 
 
     // Init vars
     Button B1, B2, B3, B4, B5, B6, B7, B8, B9;
 
-    // When pressed for the first time, the button will become activated and the second press of an another button will move
+    private UserSettings settings;
 
+    // When pressed for the first time, the button will become activated and the second press of an another button will move
 
 
     TextView currentActiveTextBox;
@@ -42,6 +44,8 @@ public class GameActivity extends AppCompatActivity {
         //Change bottom nav bar to transparent
         Window w = getWindow(); // in Activity's onCreate() for instance
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        settings = (UserSettings) getApplication();
 
         // Defining vars
         currentActiveTextBox = findViewById(R.id.currentActiveTextbox);
@@ -78,8 +82,13 @@ public class GameActivity extends AppCompatActivity {
         
         //Setting up the text box
         setTextBox(getString(R.string.current_turn, board.getCurrentTurn()));
+
+        updateView();
     }
 
+
+    private void updateView(){
+    }
 
     /**
      * Called every time a button is pressed.
@@ -170,7 +179,9 @@ public class GameActivity extends AppCompatActivity {
         Button B = findViewById(getButtonNameToId(buttonName));
 
         if(type.toLowerCase().equals(getString(R.string.black))){
+
             B.setBackgroundResource(R.drawable.blackbutton);
+
         } else if(type.toLowerCase().equals(getString(R.string.blackSelected))){
             B.setBackgroundResource(R.drawable.blackselected);
         }else if(type.toLowerCase().equals(getString(R.string.white))){

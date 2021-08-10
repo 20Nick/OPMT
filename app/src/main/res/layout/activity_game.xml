@@ -5,6 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#818181"
         tools:context=".GameActivity">
 
 
@@ -16,24 +17,25 @@
         android:contentDescription="@string/app_name"
         app:srcCompat="@drawable/board"
         app:tint="@color/grey" />
+
     <Button
-            android:id="@+id/B1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="80dp"
-            android:layout_alignTop="@id/imageView"
-            android:background="@drawable/blackbutton"
-            android:textColor="#00000000"
-            />
+        android:id="@+id/B1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@id/imageView"
+        android:layout_marginStart="80dp"
+        android:background="@drawable/blackbutton"
+        android:textColor="#00000000" />
+
     <Button
-            android:id="@+id/B2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignTop="@id/imageView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="90dp"
-            android:background="@drawable/blackbutton"
-            android:textColor="#00000000"/>
+        android:id="@+id/B2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@id/imageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/blackbutton"
+        android:textColor="#00000000" />
 
     <Button
             android:id="@+id/B3"
@@ -76,13 +78,13 @@
             android:textColor="#00000000"/>
 
     <Button
-            android:id="@+id/B7"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignTop="@id/B8"
-            android:layout_marginTop="150dp"
-            android:background="@drawable/whitebutton"
-            android:textColor="#00000000"/>
+        android:id="@+id/B7"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@id/B8"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/whitebutton"
+        android:textColor="#00000000" />
 
     <Button
             android:id="@+id/B8"
@@ -100,13 +102,15 @@
             android:layout_centerInParent="true"
             android:background="@drawable/emptybutton"
             android:textColor="#00000000"/>
+
     <TextView
-            android:id="@+id/currentActiveTextbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/imageView"
-            android:layout_marginBottom="50dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/current_turn"/>
+        android:id="@+id/currentActiveTextbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/imageView"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/current_turn"
+        android:textColor="@color/black" />
 
 </RelativeLayout>
